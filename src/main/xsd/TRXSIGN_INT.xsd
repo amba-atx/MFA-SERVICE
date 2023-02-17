@@ -1,0 +1,157 @@
+<?xml version="1.0"?>
+
+<xsd:schema xmlns="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://axis.ws.trxsign.acsp.rsa.com"
+            elementFormDefault="qualified"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://axis.ws.trxsign.acsp.rsa.com"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:rsa_csd="http://ws.csd.rsa.com"
+            xmlns:gen_ns="http://axis.ws.trxsign.acsp.rsa.com">
+
+    <xsd:import schemaLocation="ACSP.xsd" namespace="http://ws.csd.rsa.com"/>
+
+    <xsd:complexType name="TrxSignAuthenticationRequest">
+        <xsd:complexContent>
+            <xsd:extension base="rsa_csd:AcspAuthenticationRequest">
+                <xsd:annotation>
+                    <xsd:documentation>This type defines the Specific Authentication Request</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element name="isOffline" minOccurs="0" type="xsd:boolean"/>
+                    <xsd:element name="approved" minOccurs="0" type="xsd:boolean"/>
+                    <xsd:element name="bioValidation" minOccurs="0" type="xsd:boolean"/>
+                    <xsd:element name="trxSignature" minOccurs="0" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="TrxSignAuthenticationResponse">
+        <xsd:complexContent>
+            <xsd:extension base="rsa_csd:AcspAuthenticationResponse">
+                <xsd:annotation>
+                    <xsd:documentation>This type defines the Specific Authentication Response</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="TrxSignAuthStatusRequest">
+        <xsd:complexContent>
+            <xsd:extension base="rsa_csd:AcspAuthStatusRequest">
+                <xsd:annotation>
+                    <xsd:documentation>This type defines the Specific AuthStatus Request</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="TrxSignAuthStatusResponse">
+        <xsd:complexContent>
+            <xsd:extension base="rsa_csd:AcspAuthStatusResponse">
+                <xsd:annotation>
+                    <xsd:documentation>This type defines the Specific AuthStatus Response</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element name="bioValidation" minOccurs="0" type="xsd:boolean"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="TrxSignManagementRequest">
+        <xsd:complexContent>
+            <xsd:extension base="rsa_csd:AcspManagementRequest">
+                <xsd:annotation>
+                    <xsd:documentation>This type defines the Specific Management Request</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element name="action" minOccurs="0" type="gen_ns:Action"/>
+                    <xsd:element name="publicKey" minOccurs="0" type="xsd:string"/>
+                    <xsd:element name="entropy" minOccurs="0" type="xsd:string"/>
+                    <xsd:element name="indicies" minOccurs="0" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="TrxSignManagementResponse">
+        <xsd:complexContent>
+            <xsd:extension base="rsa_csd:AcspManagementResponse">
+                <xsd:annotation>
+                    <xsd:documentation>This type defines the Specific Management Response</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element name="ENCRYPTED_HMAC_KEY" minOccurs="0" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="TrxSignChallengeRequest">
+        <xsd:complexContent>
+            <xsd:extension base="rsa_csd:AcspChallengeRequest">
+                <xsd:annotation>
+                    <xsd:documentation>This type defines the Specific Challenge Request</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element name="payload" minOccurs="0" type="gen_ns:Payload"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="TrxSignChallengeResponse">
+        <xsd:complexContent>
+            <xsd:extension base="rsa_csd:AcspChallengeResponse">
+                <xsd:annotation>
+                    <xsd:documentation>This type defines the Specific Challenge Response</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element name="ENCRYPTED_KEY" minOccurs="0" type="xsd:string"/>
+                    <xsd:element name="ENCRYPTED_TRX_PAYLOAD" minOccurs="0" type="xsd:string"/>
+                    <xsd:element name="correlationId" minOccurs="0" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="Payload">
+        <xsd:annotation>
+            <xsd:documentation>This type defines the transaction payload</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="amount" minOccurs="0" type="xsd:string"/>
+            <xsd:element name="currency" minOccurs="0" type="xsd:string"/>
+            <xsd:element name="dueDate" minOccurs="0" type="xsd:string"/>
+            <xsd:element name="recurringFrequency" minOccurs="0" type="xsd:string"/>
+            <xsd:element name="fromAccountNickname" minOccurs="0" type="xsd:string"/>
+            <xsd:element name="fromAccountNumber" minOccurs="0" type="xsd:string"/>
+            <xsd:element name="payeeName" minOccurs="0" type="xsd:string"/>
+            <xsd:element name="payeeAccountNumber" minOccurs="0" type="xsd:string"/>
+            <xsd:element name="internationalAccountNumber" minOccurs="0" type="xsd:string"/>
+            <xsd:element name="payeeRoutingCode" minOccurs="0" type="xsd:string"/>
+            <xsd:element name="payeeAccountCountry" minOccurs="0" type="xsd:string"/>
+            <xsd:element name="payeeReferenceCode" minOccurs="0" type="xsd:string"/>
+            <xsd:element name="customField" minOccurs="0" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:simpleType name="Action">
+        <xsd:annotation>
+            <xsd:documentation>The valid action code</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="ADD"/>
+            <xsd:enumeration value="UPDATE"/>
+            <xsd:enumeration value="DELETE"/>
+            <xsd:enumeration value="GET"/>
+            <xsd:enumeration value="RESET"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>
+

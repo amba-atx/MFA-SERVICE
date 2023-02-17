@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:rsa_csd="http://ws.csd.rsa.com"
+            xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+            targetNamespace="http://ws.call.rsaaa.plugin.telesign.com"
+            xmlns:telesignCall="http://ws.call.rsaaa.plugin.telesign.com"
+			xmlns:telesignGen="http://ws.gen.rsaaa.plugin.telesign.com"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified">
+    <xsd:import schemaLocation="telesign-gen-rsa-aa-plugin-1.4.0.xsd" namespace="http://ws.gen.rsaaa.plugin.telesign.com"/>
+    
+	
+    <xsd:complexType name="TelesignCallAcspManagementRequest">
+        <xsd:complexContent>
+            <xsd:extension base="telesignGen:TelesignGenAcspManagementRequest">
+                <xsd:annotation>
+                    <xsd:documentation>This type defines the TeleSign RSA AA Call Plug-in Management Request</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+	
+	
+    <xsd:complexType name="TelesignCallAcspManagementResponse">
+        <xsd:complexContent>
+            <xsd:extension base="telesignGen:TelesignGenAcspManagementResponse">
+                <xsd:annotation>
+                    <xsd:documentation>This type defines the TeleSign RSA AA Call Plug-in Management Response</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+	
+	
+    <xsd:complexType name="TelesignCallAcspChallengeRequest">
+        <xsd:complexContent>
+            <xsd:extension base="telesignGen:TelesignGenAcspChallengeRequest">
+                <xsd:annotation>
+                    <xsd:documentation>This type defines the TeleSign RSA AA Call Plug-in Challenge Request</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence>
+                	<xsd:element name="template" minOccurs="0" type="xsd:string" />
+					<xsd:element name="call_forward_action" minOccurs="0" maxOccurs="1" type="xsd:string" />
+					<xsd:element name="verifyMethod" minOccurs="0" maxOccurs="1" type="xsd:string" />
+					<xsd:element name="extensions" minOccurs="0" maxOccurs="1" type="telesignGen:TeleSignExtensions" />
+				</xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+	
+	
+    <xsd:complexType name="TelesignCallAcspChallengeResponse">
+        <xsd:complexContent>
+            <xsd:extension base="telesignGen:TelesignGenAcspChallengeResponse">
+                <xsd:annotation>
+                    <xsd:documentation>This type defines the TeleSign RSA AA Call Plug-in Challenge Response</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence>
+					<xsd:element name="telesign_status_code" type="telesignCall:StatusCodeEnum" />
+				</xsd:sequence>
+			</xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+	
+	<xsd:complexType name="TelesignCallAcspAuthenticationRequest">
+        <xsd:complexContent>
+            <xsd:extension base="telesignGen:TelesignGenAcspAuthenticationRequest">
+                <xsd:annotation>
+                    <xsd:documentation>This type defines the TeleSign RSA AA Call Plug-in Authentication Request</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+	
+	<xsd:complexType name="TelesignCallAcspAuthenticationResponse">
+        <xsd:complexContent>
+            <xsd:extension base="telesignGen:TelesignGenAcspAuthenticationResponse">
+                <xsd:annotation>
+                    <xsd:documentation>This type defines the TeleSign RSA AA Call Plug-in Authentication Response</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element name="telesign_status_code" type="telesignCall:StatusCodeEnum" />
+                    <xsd:element name="call_forwarding" minOccurs="0" type="xsd:string" />                    
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+	
+	<xsd:complexType name="TelesignCallAcspAuthStatusRequest">
+        <xsd:complexContent>
+            <xsd:extension base="telesignGen:TelesignGenAcspAuthStatusRequest">
+                <xsd:annotation>
+                    <xsd:documentation>Unsupported.The plugin performs synchronous authentication</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+	
+	<xsd:complexType name="TelesignCallAcspAuthStatusResponse">
+        <xsd:complexContent>
+            <xsd:extension base="telesignGen:TelesignGenAcspAuthStatusResponse">
+                <xsd:annotation>
+                    <xsd:documentation>Unsupported.The plugin performs synchronous authentication</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+	
+	<xsd:simpleType name="StatusCodeEnum">
+        <xsd:annotation>
+            <xsd:documentation>This type defines the string enumeration for valid Status Code values</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="CALL_ANSWERED" />
+			<xsd:enumeration value="NOT_ANSWERED" />
+			<xsd:enumeration value="DISCONNECT_OCCURRED_BEFORE_MESSAGE_COMPLETED" />
+            <xsd:enumeration value="CALL_IN_PROGRESS" />
+            <xsd:enumeration value="WRONG_OR_INVALID_PHONE_NUMBER" />
+			<xsd:enumeration value="CALL_NOT_HANDLED_YET" />
+			<xsd:enumeration value="CALL_FAILED" />
+			<xsd:enumeration value="LINE_BUSY" />
+			<xsd:enumeration value="TRANSACTION_NOT_ATTEMPTED" />
+			<xsd:enumeration value="NOT_AUTHORIZED" />
+			<xsd:enumeration value="STATUS_NOT_AVAILABLE" />
+			<xsd:enumeration value="CALL_BLOCKED_BY_CUSTOMER_REQUEST" />
+			<xsd:enumeration value="CALL_BLOCKED_BY_TELESIGN" />
+		</xsd:restriction>
+    </xsd:simpleType>
+	
+	 
+</xsd:schema>
+

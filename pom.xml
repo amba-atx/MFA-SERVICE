@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.2.2.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.amba.service.mfa</groupId>
+	<artifactId>com-amba-service-mfa</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+	<name>com-amba-service-mfa</name>
+	<description>MFA Project for AMBA</description>
+	<properties>
+		<java.version>1.8</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web-services</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.boot</groupId>-->
+<!--			<artifactId>spring-boot-starter-tomcat</artifactId>-->
+<!--			<scope>provided</scope>-->
+<!--		</dependency>-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.4.0-b180830.0359</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.ws.rs</groupId>
+			<artifactId>javax.ws.rs-api</artifactId>
+			<version>2.0-m01</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.xml.ws/jaxws-api -->
+		<dependency>
+			<groupId>javax.xml.ws</groupId>
+			<artifactId>jaxws-api</artifactId>
+			<version>2.3.1</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.jws/javax.jws-api -->
+		<dependency>
+			<groupId>javax.jws</groupId>
+			<artifactId>javax.jws-api</artifactId>
+			<version>1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.ws</groupId>
+			<artifactId>spring-ws-security</artifactId>
+			
+		</dependency>
+		<dependency>
+			<groupId>org.apache.ws.security</groupId>
+			<artifactId>wss4j</artifactId>
+			<version>1.6.19</version>
+			<type>zip</type>
+        <classifier>source-release</classifier>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.json/json -->
+		<dependency>
+		    <groupId>org.json</groupId>
+		    <artifactId>json</artifactId>
+		    <version>20220924</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxws-maven-plugin</artifactId>
+				<version>2.6</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>wsimport</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<args>
+						<arg>-B-XautoNameResolution</arg>
+					</args>
+					<wsdlDirectory>${project.basedir}/src/main/resources/wsdl/</wsdlDirectory>
+					<packageName>com.lt.auth.service.stub.client</packageName>
+					<sourceDestDir>${project.basedir}/src/main/java/</sourceDestDir>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
+		<!--<?xml version="1.0" encoding="UTF-8"?>-->
+		<!--<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+		<!--	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">-->
+		<!--	<modelVersion>4.0.0</modelVersion>-->
+		<!--	<parent>-->
+		<!--		<groupId>org.springframework.boot</groupId>-->
+		<!--		<artifactId>spring-boot-starter-parent</artifactId>-->
+		<!--		<version>3.0.2</version>-->
+		<!--		<relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
+		<!--	</parent>-->
+		<!--	<groupId>com.lt.auth</groupId>-->
+		<!--	<artifactId>lt-service-auth</artifactId>-->
+		<!--	<version>0.0.1-SNAPSHOT</version>-->
+		<!--	<name>lt-service-auth</name>-->
+		<!--	<description>Authentication and Authorization service</description>-->
+		<!--	<properties>-->
+		<!--		<java.version>17</java.version>-->
+		<!--	</properties>-->
+		<!--	<dependencies>-->
+		<!--		<dependency>-->
+		<!--			<groupId>org.springframework.boot</groupId>-->
+		<!--			<artifactId>spring-boot-starter-web</artifactId>-->
+		<!--		</dependency>-->
+		<!--		<dependency>-->
+		<!--			<groupId>org.springframework.boot</groupId>-->
+		<!--			<artifactId>spring-boot-starter-web-services</artifactId>-->
+		<!--		</dependency>-->
+		<!--		<dependency>-->
+		<!--			<groupId>org.springframework.boot</groupId>-->
+		<!--			<artifactId>spring-boot-starter-test</artifactId>-->
+		<!--			<scope>test</scope>-->
+		<!--		</dependency>-->
+		<!--		&lt;!&ndash; https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api &ndash;&gt;-->
+		<!--		<dependency>-->
+		<!--			<groupId>javax.xml.bind</groupId>-->
+		<!--			<artifactId>jaxb-api</artifactId>-->
+		<!--			<version>2.4.0-b180830.0359</version>-->
+		<!--		</dependency>-->
+		<!--		<dependency>-->
+		<!--			<groupId>javax.ws.rs</groupId>-->
+		<!--			<artifactId>javax.ws.rs-api</artifactId>-->
+		<!--			<version>2.0-m01</version>-->
+		<!--		</dependency>-->
+		<!--		&lt;!&ndash; https://mvnrepository.com/artifact/javax.xml.ws/jaxws-api &ndash;&gt;-->
+		<!--		<dependency>-->
+		<!--			<groupId>javax.xml.ws</groupId>-->
+		<!--			<artifactId>jaxws-api</artifactId>-->
+		<!--			<version>2.3.1</version>-->
+		<!--		</dependency>-->
+		<!--		&lt;!&ndash; https://mvnrepository.com/artifact/javax.jws/javax.jws-api &ndash;&gt;-->
+		<!--		<dependency>-->
+		<!--			<groupId>javax.jws</groupId>-->
+		<!--			<artifactId>javax.jws-api</artifactId>-->
+		<!--			<version>1.1</version>-->
+		<!--		</dependency>-->
+		<!--	</dependencies>-->
+
+		<!--	<build>-->
+		<!--		<plugins>-->
+		<!--			<plugin>-->
+		<!--				<groupId>org.springframework.boot</groupId>-->
+		<!--				<artifactId>spring-boot-maven-plugin</artifactId>-->
+		<!--			</plugin>-->
+		<!--			<plugin>-->
+		<!--				<groupId>org.codehaus.mojo</groupId>-->
+		<!--				<artifactId>jaxb2-maven-plugin</artifactId>-->
+		<!--				<version>2.5.0</version>-->
+		<!--				<executions>-->
+		<!--					<execution>-->
+		<!--						<id>xjc</id>-->
+		<!--						<goals>-->
+		<!--							<goal>xjc</goal>-->
+		<!--						</goals>-->
+		<!--					</execution>-->
+		<!--				</executions>-->
+		<!--				<configuration>-->
+		<!--					<schemaDirectory>${project.basedir}/src/main/resources/</schemaDirectory>-->
+		<!--					<outputDirectory>${project.basedir}/src/main/java</outputDirectory>-->
+		<!--					<clearOutputDir>false</clearOutputDir>-->
+		<!--				</configuration>-->
+		<!--			</plugin>-->
+		<!--			<plugin>-->
+		<!--				<groupId>org.jvnet.jaxb2.maven2</groupId>-->
+		<!--				<artifactId>maven-jaxb2-plugin</artifactId>-->
+		<!--				<version>0.14.0</version>-->
+		<!--				<executions>-->
+		<!--					<execution>-->
+		<!--						<goals>-->
+		<!--							<goal>generate</goal>-->
+		<!--						</goals>-->
+		<!--					</execution>-->
+		<!--				</executions>-->
+		<!--				<configuration>-->
+		<!--					<schemaLanguage>WSDL</schemaLanguage>-->
+		<!--					<generatePackage>com.lt.auth.service.stub</generatePackage>-->
+		<!--					<generateDirectory>${project.basedir}/src/main/java</generateDirectory>-->
+		<!--					<schemaDirectory>${project.basedir}/src/main/resources</schemaDirectory>-->
+		<!--					<noFileHeader>true</noFileHeader>-->
+		<!--					<schemaIncludes>-->
+		<!--						<include>AdaptiveAuthentication.wsdl</include>-->
+		<!--					</schemaIncludes>-->
+		<!--				</configuration>-->
+		<!--			</plugin>-->
+		<!--		</plugins>-->
+		<!--	</build>-->
+		<!--&lt;!&ndash;	<build>&ndash;&gt;-->
+		<!--&lt;!&ndash;		<plugins>&ndash;&gt;-->
+		<!--&lt;!&ndash;			<plugin>&ndash;&gt;-->
+		<!--&lt;!&ndash;				<groupId>org.springframework.boot</groupId>&ndash;&gt;-->
+		<!--&lt;!&ndash;				<artifactId>spring-boot-maven-plugin</artifactId>&ndash;&gt;-->
+		<!--&lt;!&ndash;				<configuration>&ndash;&gt;-->
+		<!--&lt;!&ndash;					<excludes>&ndash;&gt;-->
+		<!--&lt;!&ndash;						<exclude>&ndash;&gt;-->
+		<!--&lt;!&ndash;							<groupId>org.projectlombok</groupId>&ndash;&gt;-->
+		<!--&lt;!&ndash;							<artifactId>lombok</artifactId>&ndash;&gt;-->
+		<!--&lt;!&ndash;						</exclude>&ndash;&gt;-->
+		<!--&lt;!&ndash;					</excludes>&ndash;&gt;-->
+		<!--&lt;!&ndash;				</configuration>&ndash;&gt;-->
+		<!--&lt;!&ndash;			</plugin>&ndash;&gt;-->
+		<!--&lt;!&ndash;			<plugin>&ndash;&gt;-->
+		<!--&lt;!&ndash;				<groupId>org.codehaus.mojo</groupId>&ndash;&gt;-->
+		<!--&lt;!&ndash;				<artifactId>jaxws-maven-plugin</artifactId>&ndash;&gt;-->
+		<!--&lt;!&ndash;				<version>2.6</version>&ndash;&gt;-->
+		<!--&lt;!&ndash;				<executions>&ndash;&gt;-->
+		<!--&lt;!&ndash;					<execution>&ndash;&gt;-->
+		<!--&lt;!&ndash;						<goals>&ndash;&gt;-->
+		<!--&lt;!&ndash;							<goal>wsimport</goal>&ndash;&gt;-->
+		<!--&lt;!&ndash;						</goals>&ndash;&gt;-->
+		<!--&lt;!&ndash;					</execution>&ndash;&gt;-->
+		<!--&lt;!&ndash;				</executions>&ndash;&gt;-->
+		<!--&lt;!&ndash;				<configuration>&ndash;&gt;-->
+		<!--&lt;!&ndash;					<args>&ndash;&gt;-->
+		<!--&lt;!&ndash;						<arg>-B-XautoNameResolution</arg>&ndash;&gt;-->
+		<!--&lt;!&ndash;					</args>&ndash;&gt;-->
+		<!--&lt;!&ndash;					<wsdlDirectory>${project.basedir}/src/main/resources/</wsdlDirectory>&ndash;&gt;-->
+		<!--&lt;!&ndash;					<packageName>com.amba.mfa.soap.ws.client</packageName>&ndash;&gt;-->
+		<!--&lt;!&ndash;					<sourceDestDir>${project.build.directory}/generated-sources/</sourceDestDir>&ndash;&gt;-->
+		<!--&lt;!&ndash;				</configuration>&ndash;&gt;-->
+		<!--&lt;!&ndash;			</plugin>&ndash;&gt;-->
+		<!--&lt;!&ndash;		</plugins>&ndash;&gt;-->
+		<!--&lt;!&ndash;	</build>&ndash;&gt;-->
+		<!--</project>-->

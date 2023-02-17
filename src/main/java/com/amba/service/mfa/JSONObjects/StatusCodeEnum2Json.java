@@ -1,0 +1,33 @@
+package com.amba.service.mfa.JSONObjects;
+
+public enum StatusCodeEnum2Json {
+
+	  DELIVERED_TO_HANDSET,
+	    DELIVERED_TO_GATEWAY,
+	    ERROR_DELIVERING_SMS_TO_HANDSET,
+	    TEMPORARY_PHONE_ERROR,
+	    PERMANENT_PHONE_ERROR,
+	    GATEWAY_OR_NETWORK_CANNOT_ROUTE_MESSAGE,
+	    MESSAGE_EXPIRED_BEFORE_DELIVERY,
+	    SMS_NOT_SUPPORTED,
+	    MESSAGE_BLOCKED_BY_TELESIGN,
+	    MESSAGE_BLOCKED_BY_CUSTOMER_REQUEST,
+	    INVALID_OR_UNSUPPORTED_MESSAGE_CONTENT,
+	    FINAL_STATUS_UNKNOWN,
+	    MESSAGE_IN_PROGRESS,
+	    QUEUED_BY_TELESIGN,
+	    QUEUED_AT_GATEWAY,
+	    STATUS_DELAYED,
+	    TRANSACTION_NOT_ATTEMPTED,
+	    NOT_AUTHORIZED,
+	    STATUS_NOT_AVAILABLE;
+
+	    public String value() {
+	        return name();
+	    }
+
+	    public static StatusCodeEnum2Json fromValue(String v) {
+	        return valueOf(v);
+	    }
+
+	}

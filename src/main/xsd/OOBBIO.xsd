@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:rsa_csd="http://ws.csd.rsa.com"
+            xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+            targetNamespace="http://ws.oobbio.csd.rsa.com"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            xmlns:ns="http://ws.oobbio.csd.rsa.com">
+    <xsd:import schemaLocation="ACSP.xsd" namespace="http://ws.csd.rsa.com"/>
+    <xsd:simpleType name="Action">
+        <xsd:annotation>
+            <xsd:documentation>The valid action code</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="ADD"/>
+            <xsd:enumeration value="UPDATE"/>
+            <xsd:enumeration value="DELETE"/>
+            <xsd:enumeration value="GET"/>
+            <xsd:enumeration value="RESET"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:complexType name="OOBBioAuthAuthenticationRequest">
+        <xsd:complexContent>
+            <xsd:extension base="rsa_csd:AcspAuthenticationRequest">
+                <xsd:annotation>
+                    <xsd:documentation>This type defines OOBBiometric Authentiaction Request</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence>
+                	<xsd:element name="otp" minOccurs="0" type="xsd:string" />
+                </xsd:sequence>                	
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="OOBBioAuthAuthenticationResponse">
+        <xsd:complexContent>
+            <xsd:extension base="rsa_csd:AcspAuthenticationResponse">
+                <xsd:annotation>
+                    <xsd:documentation>This type defines OOBBiometric Authentiaction Response</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="OOBBioAuthAuthStatusRequest">
+        <xsd:complexContent>
+            <xsd:extension base="rsa_csd:AcspAuthStatusRequest">
+                <xsd:annotation>
+                    <xsd:documentation>This type defines OOBBiometric AuthStatus Request</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="OOBBioAuthAuthStatusResponse">
+        <xsd:complexContent>
+            <xsd:extension base="rsa_csd:AcspAuthStatusResponse">
+                <xsd:annotation>
+                    <xsd:documentation>This type defines OOBBiometric AuthStatus Response</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="OOBBioAuthManagementRequest">
+        <xsd:complexContent>
+            <xsd:extension base="rsa_csd:AcspManagementRequest">
+                <xsd:annotation>
+                    <xsd:documentation>This type defines OOBBiometric Management Request</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element name="action" minOccurs="0" type="ns:Action" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="OOBBioAuthManagementResponse">
+        <xsd:complexContent>
+            <xsd:extension base="rsa_csd:AcspManagementResponse">
+                <xsd:annotation>
+                    <xsd:documentation>This type defines OOBBiometric Management Response</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="OOBBioAuthChallengeRequest">
+        <xsd:complexContent>
+            <xsd:extension base="rsa_csd:AcspChallengeRequest">
+                <xsd:annotation>
+                    <xsd:documentation>This type defines OOBBiometric Challenge Request</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="OOBBioAuthChallengeResponse">
+        <xsd:complexContent>
+            <xsd:extension base="rsa_csd:AcspChallengeResponse">
+                <xsd:annotation>
+                    <xsd:documentation>This type defines OOBBiometric Challenge Response</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+</xsd:schema>

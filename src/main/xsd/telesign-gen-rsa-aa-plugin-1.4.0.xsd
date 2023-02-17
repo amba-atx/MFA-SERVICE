@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:rsa_csd="http://ws.csd.rsa.com"
+            xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+			targetNamespace="http://ws.gen.rsaaa.plugin.telesign.com"
+            xmlns:telesignGen="http://ws.gen.rsaaa.plugin.telesign.com"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified">
+    <xsd:import schemaLocation="ACSP.xsd" namespace="http://ws.csd.rsa.com"/>
+    
+	
+    <xsd:complexType name="TelesignGenAcspManagementRequest" abstract="true">
+        <xsd:complexContent>
+            <xsd:extension base="rsa_csd:AcspManagementRequest">
+                <xsd:annotation>
+                    <xsd:documentation>This type defines the TeleSign RSA AA Plug-in Generic Management Request</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element name="actionType" type="telesignGen:ActionTypeEnum" />
+					<xsd:element name="phoneNo" minOccurs="0" type="xsd:string" />					
+					<xsd:element name="language" minOccurs="0" type="xsd:string" />
+					<xsd:element name="extensions" minOccurs="0" maxOccurs="1" type="telesignGen:TeleSignExtensions" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+	
+	
+    <xsd:complexType name="TelesignGenAcspManagementResponse" abstract="true">
+        <xsd:complexContent>
+            <xsd:extension base="rsa_csd:AcspManagementResponse">
+                <xsd:annotation>
+                    <xsd:documentation>This type defines the TeleSign RSA AA Plug-in Generic Management Response</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element name="phoneNo" minOccurs="0" type="xsd:string" />
+					<xsd:element name="language" minOccurs="0" type="xsd:string" />
+					<xsd:element name="extensions" minOccurs="0" maxOccurs="1" type="telesignGen:TeleSignExtensions" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+	
+	
+    <xsd:complexType name="TelesignGenAcspChallengeRequest" abstract="true">
+        <xsd:complexContent>
+            <xsd:extension base="rsa_csd:AcspChallengeRequest">
+                <xsd:annotation>
+                    <xsd:documentation>This type defines the TeleSign RSA AA Plug-in Generic Challenge Request</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element name="phoneNo" minOccurs="0" type="xsd:string" />
+					<xsd:element name="language" minOccurs="0" type="xsd:string" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+	
+	
+    <xsd:complexType name="TelesignGenAcspChallengeResponse" abstract="true">
+        <xsd:complexContent>
+            <xsd:extension base="rsa_csd:AcspChallengeResponse">
+                <xsd:annotation>
+                    <xsd:documentation>This type defines the TeleSign RSA AA Plug-in Generic Challenge Response</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence/>
+			</xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+	
+	<xsd:complexType name="TelesignGenAcspAuthenticationRequest" abstract="true">
+        <xsd:complexContent>
+            <xsd:extension base="rsa_csd:AcspAuthenticationRequest">
+                <xsd:annotation>
+                    <xsd:documentation>This type defines the TeleSign RSA AA Plug-in Generic Authentication Request</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element name="verify_code" type="xsd:string" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+	
+	<xsd:complexType name="TelesignGenAcspAuthenticationResponse" abstract="true">
+        <xsd:complexContent>
+            <xsd:extension base="rsa_csd:AcspAuthenticationResponse">
+                <xsd:annotation>
+                    <xsd:documentation>This type defines the TeleSign RSA AA Plug-in Generic Authentiaction Response</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence>
+					<xsd:element name="telesign_verify_state" type="telesignGen:VerifyStateEnum" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+	
+	<xsd:complexType name="TelesignGenAcspAuthStatusRequest">
+        <xsd:complexContent>
+            <xsd:extension base="rsa_csd:AcspAuthStatusRequest">
+                <xsd:annotation>
+                    <xsd:documentation>Unsupported.The plugin performs synchronous authentication</xsd:documentation>
+                </xsd:annotation>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+	
+    <xsd:complexType name="TelesignGenAcspAuthStatusResponse">
+		<xsd:complexContent>
+			<xsd:extension base="rsa_csd:AcspAuthStatusResponse">
+				<xsd:annotation>
+					<xsd:documentation>Unsupported. The plugin performs synchronous authentication</xsd:documentation>
+				</xsd:annotation>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+	
+	<xsd:simpleType name="VerifyStateEnum">
+		<xsd:annotation>
+            <xsd:documentation>This type defines the string enumeration for valid verify_state values</xsd:documentation>
+        </xsd:annotation>
+		<xsd:restriction base="xsd:string">
+            <xsd:enumeration value="VALID" />
+			<xsd:enumeration value="INVALID" />
+            <xsd:enumeration value="UNKNOWN" />
+        </xsd:restriction>
+	</xsd:simpleType>
+	
+	
+	<xsd:simpleType name="ActionTypeEnum">
+        <xsd:annotation>
+            <xsd:documentation>This type defines the string enumeration for valid actionType values</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="ADD_USER" />
+			<xsd:enumeration value="DELETE_USER_DETAILS" />
+			<xsd:enumeration value="GET_USER_DETAILS" />
+            <xsd:enumeration value="UPDATE_PHONE_NUMBER" />
+            <xsd:enumeration value="UPDATE_LANGUAGE" />
+			<xsd:enumeration value="UPDATE_PHONE_NUMBER_AND_LANGUAGE" />
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+	<xsd:complexType name="TeleSignExtensions">
+    	<xsd:sequence>
+    		<xsd:element name="extensionType" type="xsd:int" minOccurs="0"/>
+    		<xsd:element name="extensionTemplate" type="xsd:string" minOccurs="0"/>
+    	</xsd:sequence>
+    </xsd:complexType>
+	
+</xsd:schema>
+

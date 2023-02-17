@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:rsa_csd="http://ws.csd.rsa.com"
+            xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+            targetNamespace="http://ws.csd.rsa.com"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified">
+
+
+    <xsd:include schemaLocation="OTP.xsd"/>
+    <xsd:include schemaLocation="OTPSMS.xsd"/>
+    <xsd:include schemaLocation="OTPEmail.xsd"/>
+
+    <xsd:import namespace="http://ws.kba.csd.rsa.com"  schemaLocation="KBA.xsd"/>
+    <xsd:import namespace="http://ws.oobsms.csd.rsa.com"  schemaLocation="OOBSMS.xsd"/>
+    <xsd:import namespace="http://ws.oobbio.csd.rsa.com"  schemaLocation="OOBBIO.xsd"/>
+    <xsd:import namespace="http://ws.call.rsaaa.plugin.telesign.com"  schemaLocation="telesign-call-rsa-aa-plugin-1.4.0.xsd"/>
+    <xsd:import namespace="http://ws.sms.rsaaa.plugin.telesign.com"  schemaLocation="telesign-sms-rsa-aa-plugin-1.4.0.xsd"/>
+    <xsd:import namespace="http://axis.ws.trxsign.acsp.rsa.com" schemaLocation="TRXSIGN.xsd"/>
+
+</xsd:schema>

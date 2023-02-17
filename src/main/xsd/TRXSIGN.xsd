@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<xsd:schema xmlns="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://axis.ws.trxsign.acsp.rsa.com"
+            elementFormDefault="qualified"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://axis.ws.trxsign.acsp.rsa.com"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <xsd:import schemaLocation="ACSP.xsd" namespace="http://ws.csd.rsa.com"/>
+
+    <xsd:include schemaLocation="TRXSIGN_INT.xsd" />
+
+</xsd:schema>
+

@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:rsa_csd="http://ws.csd.rsa.com"
+            xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+            targetNamespace="http://ws.csd.rsa.com"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified">
+    <xsd:include schemaLocation="OTP.xsd"/>
+
+ 
+    <xsd:complexType name="OTPEmailAuthenticationRequest">
+        <xsd:complexContent>
+            <xsd:extension base="rsa_csd:AcspAuthenticationRequest">
+                <xsd:annotation>
+                    <xsd:documentation>This type defines OTP Email Authentiaction Request</xsd:documentation>
+                </xsd:annotation>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="OTPEmailAuthenticationResponse">
+        <xsd:complexContent>
+            <xsd:extension base="rsa_csd:AcspAuthenticationResponse">
+                <xsd:annotation>
+                    <xsd:documentation>This type defines OTP Email Authentiaction Response</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="OTPEmailAuthStatusRequest">
+        <xsd:complexContent>
+            <xsd:extension base="rsa_csd:AcspAuthStatusRequest">
+                <xsd:annotation>
+                    <xsd:documentation>This type defines OTP Email AuthStatus Request</xsd:documentation>
+                </xsd:annotation>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="OTPEmailAuthStatusResponse">
+        <xsd:complexContent>
+            <xsd:extension base="rsa_csd:AcspAuthStatusResponse">
+                <xsd:annotation>
+                    <xsd:documentation>This type defines OTP Email AuthStatus Response</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="OTPEmailManagementRequest">
+        <xsd:complexContent>
+            <xsd:extension base="rsa_csd:AcspManagementRequest">
+                <xsd:annotation>
+                    <xsd:documentation>This type defines OTP Email Management Request</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="OTPEmailanagementResponse">
+        <xsd:complexContent>
+            <xsd:extension base="rsa_csd:AcspManagementResponse">
+                <xsd:annotation>
+                    <xsd:documentation>This type defines OTP Email Management Response</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="OTPEmailhallengeRequest">
+        <xsd:complexContent>
+            <xsd:extension base="rsa_csd:AcspChallengeRequest">
+                <xsd:annotation>
+                    <xsd:documentation>This type defines OTP Email Challenge Request</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="OTPEmailChallengeResponse">
+        <xsd:complexContent>
+            <xsd:extension base="rsa_csd:AcspChallengeResponse">
+                <xsd:annotation>
+                    <xsd:documentation>This type defines OTP Email Challenge Response</xsd:documentation>
+                </xsd:annotation>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+</xsd:schema>
+
